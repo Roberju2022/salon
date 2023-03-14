@@ -1,1 +1,0 @@
-composer create-project laravel/laravel mi-proyecto-laravel
