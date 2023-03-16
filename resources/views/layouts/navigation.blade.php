@@ -15,7 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="('/my-schelude')" :active="request()->routeIs('my-schelude')">
+                        {{ __('Mi agenda') }}
+                    </x-nav-link>
+
                 </div>
+
+
+
             </div>
 
             <!-- Settings Dropdown -->
