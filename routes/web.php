@@ -27,6 +27,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', function () {  return view('dashboard');      })->name('dashboard');
     Route::get('/my-schelude', [MyScheludeController::class, 'index'])->name('my-schelude');
+    Route::get('/my-schelude/create', [MyScheludeController::class, 'create'])->name('my-schelude.create');
+    Route::post('/my-schelude', [MyScheludeController::class, 'store'])->name('my-schelude.store');
+    Route::delete('/my-schelude/{scheduler}', [MyScheludeController::class, 'destroy'])->name('my-schedule.destroy');
+
 
 
 

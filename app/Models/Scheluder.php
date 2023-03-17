@@ -15,11 +15,18 @@ class Scheluder extends Model
     protected $table = 'scheluder';
 
 
-
+    protected $fillable = [
+        'from',
+        'to',
+        'status',
+        'staff_user_id',
+        'client_user_id',
+        'service_id',
+    ];
 
     protected $casts = [
     'from' => 'datetime:h-s',
-    'to' => 'datetime:h-s',
+    'to' => 'datetime:Y-m-d H:00',
 ];
 
 

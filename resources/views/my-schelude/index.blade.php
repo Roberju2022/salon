@@ -34,13 +34,29 @@
                         <div class="flex items-center mt-2 bg-indigo-100 p-3 rounded">
                                     <div class="w-1/2">
                                         <div>{{ $schedule->service->name }} con {{ $schedule->staffUser->name }}</div>
-                                        <div>Desde <span class="font-bold">{{ $schedule->from->format('h:s') }}</span> hasta <span class="font-bold">{{ $schedule->to->format('h:s')}}</span></div>
+                                        <div>Desde <span class="font-bold">{{ $schedule->from->format('h:i') }}</span> hasta <span class="font-bold">{{ $schedule->to->format('h:i')}}</span></div>
                                     </div>
                         </div>
+
+
+                        <div>
+                                        {{-- @can('delete', $schedule) --}}
+                                            <form method="POST" onsubmit="return confirm('¿Realmente deseas cancelar esta cita?')" action="{{ route('my-schedule.destroy', ['scheduler' => $schedule->id]) }}" class="inline-block">
+                                                @method('DELETE')
+                                                @csrf
+                                                <x-button>Cancelar</x-button>
+                                            </form>
+                                        {{-- @endcan --}}
+                                        {{-- <x-link href="{{ route('my-schedule.edit', ['scheduler' => $schedule->id]) }}">
+                                            Reagendar
+                                        </x-link> --}}
+                                    </div>
+
 
                    @endforeach
 
 
+                    <x-link class="mt-2" href="{{ route('my-schelude.create', ['date' => $date->format('Y-m-d')]) }}">Reservar cita</x-link>
 
 
                     </div>
