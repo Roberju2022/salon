@@ -4,7 +4,7 @@ namespace App\Business;
 
 use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Scheluder;
+use App\Models\Scheduler;
 
 class ClientAvailabilityChecker
 {
@@ -34,7 +34,7 @@ class ClientAvailabilityChecker
 
     public function check()
     {
-        return !Scheluder::where('client_user_id', $this->clientUser->id)
+        return !Scheduler::where('client_user_id', $this->clientUser->id)
             ->when($this->ignoreScheduler, function ($query) {
                 $query->where('id', '<>', $this->scheduler->id);
             })
