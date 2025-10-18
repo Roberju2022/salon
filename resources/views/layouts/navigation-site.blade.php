@@ -29,9 +29,7 @@
         <li class="mr-3">
             <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="/about">Nosotros</a>
         </li>
-        <li class="mr-3">
-            <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="/contact">Contacto</a>
-        </li>
+
         </ul>
         @auth
             <a

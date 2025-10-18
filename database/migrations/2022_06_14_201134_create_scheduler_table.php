@@ -26,8 +26,8 @@ return new class extends Migration
             $table->foreign('staff_user_id')
                 ->references('id')
                 ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onUpdate('RESTRICT')
+                ->onDelete('RESTRICT');
 
             $table->foreign('client_user_id')
                 ->references('id')
