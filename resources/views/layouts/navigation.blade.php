@@ -101,13 +101,35 @@
         </div>
     </div>
 
-    <!-- Responsive Navigation Menu -->
+        <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
+    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        {{ __('Dashboard') }}
+    </x-responsive-nav-link>
+
+    @if (auth()->user()->hasRole('client'))
+        <x-responsive-nav-link href="/my-schedule" :active="request()->routeIs('my-schedule')">
+            {{ __('Mi agenda') }}
+        </x-responsive-nav-link>
+    @endif
+
+    @if (auth()->user()->hasRole('staff'))
+        <x-responsive-nav-link href="{{ route('staff-scheduler.index') }}" :active="request()->routeIs('staff-scheduler.index')">
+            {{ __('Agenda') }}
+        </x-responsive-nav-link>
+    @endif
+
+    @if (auth()->user()->hasRole('admin'))
+        <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+            {{ __('Usuarios') }}
+        </x-responsive-nav-link>
+
+        <x-responsive-nav-link :href="route('opening-hours.edit')" :active="request()->routeIs('opening-hours.edit')">
+            {{ __('Horarios') }}
+        </x-responsive-nav-link>
+    @endif
+</div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
